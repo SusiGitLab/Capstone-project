@@ -9,6 +9,6 @@ GIT_BRANH=git rev-parse --abbrev-ref HEAD
    Docker tag nginximg dockerrpo/prod:latest
    Docker login command
    Docker push
-   Else
+ se
    Echo “Deployment failed”
 
