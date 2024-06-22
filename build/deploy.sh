@@ -1,14 +1,21 @@
-GIT_BRANH=git rev-parse --abbrev-ref HEAD
-   if[[$GIT_BRANCH==dev]]
-   ./build.sh
-   Docker tag nginximg dockerrpo/dev:latest
-   Docker login command
-   Docker push
-   elsif[[$GIT_BRANCH==prod]]
-   ./build.sh
-   Docker tag nginximg dockerrpo/prod:latest
-   Docker login command
-   Docker push
- se
-   Echo “Deployment failed”
+#!/bin/bash
 
+set -x #Enable debugging output
+
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "$GIT_BRANCH" == 'dev_branch' ]]; then
+   echo "Build and deploying code in Development"
+   ./build.sh
+   docker tag nginximg susidockerrepo/dev:latest
+   docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PAT"
+   docker push susidockerrepo/dev:latest
+elif [[ "$GIT_BRANCH" == 'main' ]]; then
+   echo "Build and deploying code in production"
+   ./build.sh
+   docker tag nginximg susidockerrepo/prod:latest
+   docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PAT"
+   docker push susidockerrepo/prod:latest
+else
+   echo "Deployment failed..."
+fi
