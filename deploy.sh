@@ -12,7 +12,7 @@ if [[ "$GIT_BRANCH" == 'dev_branch' ]]; then
    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PAT"
    docker push susidockerrepo/dev:latest
 elif [[ "$GIT_BRANCH" == 'main' ]]; then
-   echo "Build and deploying code in production"
+   echo "Build and deploying code in production "
    ./build.sh
    docker tag nginximg susidockerrepo/prod:latest
    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PAT"
