@@ -4,5 +4,5 @@ services:
   nginxcont:
     image: nginximg
     ports:
-      - "3000:80"
+      - "3500:80"
 
