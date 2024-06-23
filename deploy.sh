@@ -3,6 +3,7 @@
 set -x #Enable debugging output
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo $GIT_BRANCH
 
 if [[ "$GIT_BRANCH" == 'dev_branch' ]]; then
    echo "Build and deploying code in Development"
