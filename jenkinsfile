@@ -1,16 +1,14 @@
 pipeline {
   agent any
-  stages{
-  stage('Get Branch Name') {
-            steps {
-                script {
-                    branchName = sh(script: 'git branch --show-current', returnStdout: true).trim()
-                    echo "Current branch: $branchName"
-                }
-            }
-        }
-     }
   stages {
+    stage('Get Branch Name') {
+      steps {
+        script {
+          branchName = sh(script: 'git branch --show-current', returnStdout: true).trim()
+          echo "Current branch: $branchName"
+        }
+      }
+    }
     stage('Build') {
       steps {
         sh 'sh build.sh'
@@ -19,26 +17,10 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'sh deploy.sh'
-        }
       }
     }
-    
-  }       
-              
-  
-
-                 
-    
-  
-    
-
-  
-
-
-
-
-             
-              
+  }
+}
   
 
                  
