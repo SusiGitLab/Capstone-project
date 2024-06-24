@@ -5,7 +5,7 @@ FROM nginx:latest
 WORKDIR /app
 
 # Copy all the files in current path to nginx app default path
-COPY . /usr/share/nginx/html/
+COPY build /usr/share/nginx/html/
 
 
 # Expose the application to visible on the browser:
