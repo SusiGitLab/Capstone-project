@@ -2,7 +2,7 @@
 
 #set -x #Enable debugging output
 
-echo "DOCKER_PAT value: $DOCKER_PAT"
+#echo "DOCKER_PAT value: $DOCKER_PAT"
 
 if [ "$BRANCH_NAME" = "dev_branch" ]; then
    echo "Build and deploying code in Development "
